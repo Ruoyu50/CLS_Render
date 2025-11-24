@@ -53,7 +53,7 @@ useEffect(() => {
     // 注意：Render 部署后是 HTTPS，所以 WebSocket 必须用 wss:// (Secure WebSocket)
     // 请将 'your-app-name' 换成你在 Render 上得到的真实名字
     const socketUrl = isProduction 
-      ? "wss://你的Render项目名.onrender.com" 
+      ? "wss://cls-render.onrender.com" 
       : "ws://localhost:3001";
 
     console.log("Connecting to WebSocket:", socketUrl); // 方便调试看连的哪里
