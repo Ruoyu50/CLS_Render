@@ -46,15 +46,7 @@ export default function CollaborativeBoard() {
   // Sync draggedId state to ref
 useEffect(() => {
     // ----------------- 修改开始 -----------------
-    // 1. 判断当前是否是生产环境 (build 之后运行就是在生产环境)
-    const isProduction = import.meta.env.MODE === 'production';
-
-    // 2. 设置地址
-    // 注意：Render 部署后是 HTTPS，所以 WebSocket 必须用 wss:// (Secure WebSocket)
-    // 请将 'your-app-name' 换成你在 Render 上得到的真实名字
-    const socketUrl = isProduction 
-      ? "wss://cls-render-client.onrender.com" 
-      : "ws://localhost:3001";
+    const socketUrl = "wss://cls-render-client.onrender.com" 
 
     console.log("Connecting to WebSocket:", socketUrl); // 方便调试看连的哪里
 
