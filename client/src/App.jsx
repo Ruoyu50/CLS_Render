@@ -192,54 +192,6 @@ useEffect(() => {
     isDrawingRef.current = false;
   };
 
-  useEffect(() => {
-    ws.current = new WebSocket("ws://localhost:3001");
-
-    const handleRemoteDraw = (data) => {
-        const p = p5InstanceRef.current;
-        if (p) {
-            p.drawLineSegment(data.x0, data.y0, data.x1, data.y1);
-        }
-        drawingHistoryRef.current.push(data);
-    };
-
-    ws.current.onmessage = (msg) => {
-      try {
-        const response = JSON.parse(msg.data);
-        
-        if (response.type === 'init') {
-            setNotes(response.data.notes);
-            drawingHistoryRef.current = response.data.drawings;
-            if (p5InstanceRef.current) {
-                drawHistory(p5InstanceRef.current, response.data.drawings);
-            }
-        }
-        
-        if (response.type === 'updateNotes') {
-          if (!draggedIdRef.current) setNotes(response.data);
-        }
-
-        if (response.type === 'draw') {
-            handleRemoteDraw(response.data);
-        }
-
-        if (response.type === 'clearBoard') {
-            drawingHistoryRef.current = [];
-            if (p5InstanceRef.current) {
-                 p5InstanceRef.current.background(240, 242, 245);
-            }
-        }
-
-      } catch (e) {
-        console.error("WS Error:", e);
-      }
-    };
-
-    return () => {
-      if (ws.current) ws.current.close();
-    };
-  }, []);
-
   const clearCanvas = () => {
     drawingHistoryRef.current = [];
     if (p5InstanceRef.current) p5InstanceRef.current.background(240, 242, 245);
