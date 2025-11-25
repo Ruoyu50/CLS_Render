@@ -1,1 +1,1 @@
-https://cls-render-client.onrender.com/
+https://cls-collaborative-client.onrender.com/
