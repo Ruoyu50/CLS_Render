@@ -46,7 +46,7 @@ export default function CollaborativeBoard() {
   // Sync draggedId state to ref
 useEffect(() => {
     // ----------------- 修改开始 -----------------
-    const socketUrl = "wss://cls-render.onrender.com"
+    const socketUrl = "wss://cls-collaborative.onrender.com"
 
     console.log("Connecting to WebSocket:", socketUrl); // 方便调试看连的哪里
 
