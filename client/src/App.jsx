@@ -308,6 +308,7 @@ useEffect(() => {
             onMouseDown={(e) => e.stopPropagation()} // 阻止删除按钮触发画线或拖动逻辑
         >
             &times;
+            {/* 🗑️ */}
         </button>
 
             <textarea
